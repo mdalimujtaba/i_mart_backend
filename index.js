@@ -1,6 +1,6 @@
 const express=require("express")
-require("dotenv").config()
 const cors=require("cors")
+require("dotenv").config()
 const { connected } = require("./configs/db")
 const { userRoute } = require("./routes/userRoute")
 const { AdminRoute } = require("./routes/adminRoute")
@@ -19,8 +19,8 @@ app.use("/admin",AdminRoute)
 app.use("/product",productRoute)
 app.use("/cart",cartRoute)
 
-
-app.listen(process.env.port,async()=>{
+let PORT=process.env.PORT
+app.listen(PORT,async()=>{
     try {
         await connected
         console.log("connected to database")
@@ -28,5 +28,5 @@ app.listen(process.env.port,async()=>{
         console.log(error)
         
     }
-    console.log(`server is running at http://localhost:${process.env.port}`)
+    console.log(`server is running at http://localhost:${PORT}`)
 })
