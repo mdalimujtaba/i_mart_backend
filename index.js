@@ -7,7 +7,7 @@ const { AdminRoute } = require("./routes/adminRoute")
 const { productRoute } = require("./routes/productRoute")
 const { cartRoute } = require("./routes/cartRoute")
 const app=express()
-app.use(cors())
+app.use(cors({origin:'https://i-mart-frontend-xi.vercel.app/'}))
 app.use(express.json())
 
 app.get("/",(req,res)=>{
