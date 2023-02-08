@@ -60,8 +60,6 @@ productRoute.get("/:id",async(req,res)=>{
     
     try {
         const data=await ProductModel.findOne({_id:id})
-        
-        console.log('find',data)
         res.send({"msg":"Got the Data","data":data})
     } catch (error) {
         res.send({"msg":"Something went wrong"})
@@ -74,7 +72,6 @@ productRoute.post("/addProduct",async(req,res)=>{
         const data=new ProductModel(payload)
         await data.save()
         res.send({"msg":"Product added to database"})
-        console.log(data)
     } catch (error) {
         console.log(error)
         res.send({"msg":"Something went wrong"})

@@ -62,13 +62,14 @@ cartRoute.patch("/update", async (req, res) => {
 });
 
 cartRoute.delete(`/delete/:id`, async (req, res) => {
-  let pr_id = req.params.id;
-  console.log(pr_id);
+  let pr_id=req.params.id
+    
   try {
-    await CartModel.findByIdAndDelete({ _id: pr_id });
-    return res.send("item deleted from cart");
-  } catch (err) {
-    return res.status(500).send(err);
+   let data= await CartModel.findByIdAndDelete({_id:pr_id});
+    console.log(data)
+    res.send("item deleted from cart");
+  } catch (err){
+     res.send({'msg':"Something went wrong"})
   }
 });
 
