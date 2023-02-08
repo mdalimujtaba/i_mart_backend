@@ -19,7 +19,7 @@ app.use("/admin",AdminRoute)
 app.use("/product",productRoute)
 app.use("/cart",cartRoute)
 
-let PORT=process.env.PORT
+let PORT=process.env.PORT||8080
 app.listen(PORT,async()=>{
     try {
         await connected
