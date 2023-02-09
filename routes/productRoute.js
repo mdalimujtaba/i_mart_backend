@@ -66,6 +66,23 @@ productRoute.get("/:id",async(req,res)=>{
         
     }
 })
+
+productRoute.get("/search/:key", async (req, res) => {
+    console.log(req.params.key)
+    try {
+        let data=await ProductModel.find({
+            "$or":[
+                {title:{$regex:req.params.key}},
+                {category:{$regex:req.params.key}},
+                {type:{$regex:req.params.key}},
+                {gender:{$regex:req.params.key}}
+            ]
+          })
+          res.send(data)
+    } catch (error) {
+        console.log(error)
+    }
+})
 productRoute.post("/addProduct",async(req,res)=>{
     const payload=req.body
     try {
