@@ -1,5 +1,5 @@
 const express=require("express")
-const { authentication } = require("../Authentication/CartAuthentication")
+const { authentication } = require("../Authentication/cartAuthentication")
 const { historyModel } = require("../model/orderhistoryModel")
 const historyRoute=express.Router()
 
