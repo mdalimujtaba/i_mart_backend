@@ -72,6 +72,17 @@ cartRoute.delete(`/delete/:id`, async (req, res) => {
      res.send({'msg':"Something went wrong"})
   }
 });
+// this is to empty cart after shopping is over and order is placed.
+cartRoute.delete(`/delete`, async (req, res) => {
+  try {
+   let data= await CartModel.deleteMany({})
+    // console.log(data)
+    res.send("item deleted from cart");
+  } catch (err){
+     res.send({'msg':"Something went wrong"})
+  }
+ 
+});
 
 module.exports = {
   cartRoute,
