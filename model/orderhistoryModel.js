@@ -14,6 +14,10 @@ const historySchema=mongoose.Schema({
         type:String,
         required:true
     },
+    date:{
+        type:String,
+        required:true
+    },
     quantity: {
         type: Number,
         required: false

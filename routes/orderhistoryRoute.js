@@ -21,15 +21,12 @@ historyRoute.get("/",async(req,res)=>{
 
 
 historyRoute.post("/addproduct",async(req,res)=>{
-    const {product,userID,address,quantity}=req.body
-    // console.log("product",product)
-    // console.log("userID",userID)
-    // console.log("address",address)
-    // console.log("quantity",quantity)
+    const {product,userID,date,address,quantity}=req.body
+  
     
    try {
-    const data=await historyModel.create({product,userID,address,quantity})
-    console.log(data)
+    const data=await historyModel.create({product,userID,date,address,quantity})
+    // console.log(data)
     res.send({"msg":"product successfully added"})
    } catch (error) {
     console.log(error)
