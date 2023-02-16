@@ -44,6 +44,8 @@ userRoute.post("/login",async(req,res)=>{
                     const token=jwt.sign({"userID":data[0]._id,"name":data[0].firstname},"projectreact")
                     res.send({"msg":"Login Successfull","token":token,"firstname":data[0].firstname})
                     
+                }else{
+                     res.send({"msg":"Wrong Credential"})
                 }
                 
             });
