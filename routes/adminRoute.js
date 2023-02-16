@@ -34,13 +34,14 @@ AdminRoute.post("/login",async(req,res)=>{
     const {email,password}=req.body
     try {
         const data=await AdminModel.find({email})
-        console.log(data)
         if(data.length>0){
             bcrypt.compare(password, data[0].password, async(err, result)=>{
                 if(result){
                     const token=jwt.sign({"userID":data[0]._id,"name":data[0].firstname},"projectreact")
                     res.send({"msg":"Login Successfull","token":token,"firstname":data[0].firstname})
                     
+                }else{
+                    res.send({"msg":"Wrong Credential"})
                 }
             });
         }
