@@ -82,7 +82,16 @@ userRoute.patch("/update",async(req,res)=>{
 
     }
 })
-
+userRoute.delete("/delete/:id",async(req,res)=>{
+    let id=req.params.id
+    try {
+        await UserModel.findByIdAndDelete({_id:id})
+        res.send(`id number ${id} is deleted`)
+    } catch (error) {
+        console.log(error)
+        res.send("Something went wrong")
+    }
+})
 module.exports={
     userRoute
 }
