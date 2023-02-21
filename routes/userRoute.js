@@ -4,7 +4,14 @@ const jwt=require("jsonwebtoken")
 const { UserModel } = require("../model/userModel")
 
 const userRoute=express.Router()
-
+userRoute.get("/",async(req,res)=>{
+    try {
+        let output=await UserModel.find().sort({firstname:1})
+        res.send({"msg":"You got data","data":output})
+    } catch (error) {
+        res.send({'msg':"Something went wrong"})
+    }
+})
 userRoute.post("/signup",async(req,res)=>{
     const {firstname,lastname,email,password,cpassword}=req.body
 
