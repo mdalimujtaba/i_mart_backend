@@ -7,6 +7,7 @@ const { AdminRoute } = require("./routes/adminRoute")
 const { productRoute } = require("./routes/productRoute")
 const { cartRoute } = require("./routes/cartRoute")
 const { historyRoute } = require("./routes/orderhistoryRoute")
+const { orderRoute } = require("./routes/orderRoute")
 const app=express()
 app.use(cors({origin:'*'}))
 app.use(express.json())
@@ -20,6 +21,7 @@ app.use("/admin",AdminRoute)
 app.use("/product",productRoute)
 app.use("/cart",cartRoute)
 app.use("/history",historyRoute)
+app.use("/order",orderRoute)
 
 let PORT=process.env.PORT||8080
 app.listen(PORT,async()=>{
