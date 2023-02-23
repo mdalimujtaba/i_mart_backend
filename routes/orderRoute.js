@@ -33,9 +33,9 @@ orderRoute.use(authentication)
 
 
 orderRoute.post("/addorder",async(req,res)=>{
-    const {product,userID,date,address,quantity}=req.body  
+    const {product,userID,date,address,finalTotal,quantity,contact}=req.body  
    try {
-    const data=await orderModel.create({product,userID,address,date,quantity})
+    const data=await orderModel.create({product,userID,address,finalTotal,date,quantity,contact})
     console.log(data)
     res.send({"msg":"product successfully added"})
    } catch (error) {

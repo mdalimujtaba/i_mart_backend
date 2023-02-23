@@ -14,6 +14,14 @@ const orderSchema=mongoose.Schema({
         type:String,
         required:true
     },
+    finalTotal:{
+        type:Number,
+        required:true
+    },
+    contact:{
+        type:Number,
+        required:true
+    },
     date:{
         type:String,
         required:true
